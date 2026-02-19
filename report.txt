@@ -1,0 +1,298 @@
+📘 Project Report
+EcoReceipt – Environmental Impact Analyzer
+1️⃣ Project Overview
+
+EcoReceipt is a sustainability-focused receipt analysis system that extracts product information from uploaded receipt images and evaluates their environmental impact.
+
+The system performs:
+
+OCR-based text extraction
+
+Product name cleaning and parsing
+
+Fuzzy matching against a sustainability database
+
+Environmental impact scoring
+
+Alternative product recommendation
+
+Dashboard visualization
+
+PDF improvement guide generation
+
+The goal of Phase 1 was to build a structured, modular, scalable system capable of evolving into a production-grade sustainability intelligence platform.
+
+2️⃣ Problem Statement
+
+Consumers are often unaware of the environmental impact of their daily purchases.
+
+Receipts contain valuable behavioral data, but:
+
+They are unstructured
+
+OCR text is noisy
+
+Product names vary
+
+Impact information is not directly available
+
+This project solves:
+
+Automatic receipt understanding
+
+Sustainable product scoring
+
+Actionable eco-friendly suggestions
+
+3️⃣ System Architecture (Phase 1)
+User Upload (Image)
+        ↓
+OCR Engine (Tesseract)
+        ↓
+Text Cleaning & Parsing
+        ↓
+Fuzzy Matching (RapidFuzz)
+        ↓
+Sustainability Product Database
+        ↓
+Impact Scoring Engine
+        ↓
+Interactive Dashboard + PDF Report
+
+4️⃣ Final File Structure
+EcoReceipt/
+│
+├── app.py
+├── Dockerfile
+├── requirements.txt
+├── README.md
+├── .gitignore
+│
+├── pages/
+│   └── 1_Report.py
+│
+├── core/
+│   ├── __init__.py
+│   ├── database.py
+│   ├── ocr_engine.py
+│   ├── parser.py
+│   └── scorer.py
+│
+├── data/
+│   └── products.csv
+│
+├── assets/
+│   ├── dashboard.png
+│   ├── trend.png
+│   └── upload.png
+│
+└── .streamlit/
+    └── config.toml
+
+
+Architecture design principles used:
+
+Separation of concerns
+
+UI layer separate from logic layer
+
+Core logic modularized
+
+Future ML-ready structure
+
+Container-ready
+
+5️⃣ Core Components
+🔹 OCR Engine (core/ocr_engine.py)
+
+Uses Tesseract OCR
+
+Extracts text from receipt images
+
+Designed to support future ML OCR replacement
+
+🔹 Parser (core/parser.py)
+
+Cleans noisy OCR text
+
+Removes irrelevant lines
+
+Extracts probable product names
+
+🔹 Scorer (core/scorer.py)
+
+Uses RapidFuzz for fuzzy product matching
+
+Maps detected products to database entries
+
+Returns:
+
+matched product
+
+impact score
+
+category
+
+greener alternative
+
+impact reason
+
+🔹 Database (core/database.py)
+
+Loads products.csv
+
+Acts as sustainability reference dataset
+
+Designed for future migration to PostgreSQL
+
+6️⃣ Dashboard Features
+✔ Clean Product Table
+
+Displays:
+
+item_detected
+
+matched_product
+
+impact_score
+
+category
+
+greener_alternative
+
+impact_reason
+
+✔ Impact Metrics
+
+Average impact score
+
+High-impact item count
+
+✔ Line Graph
+
+X-axis: Items
+
+Y-axis: Impact Score
+
+Clear trend visualization
+
+✔ Suggested Improvements Section
+
+Displays high-impact items
+
+Shows reason
+
+Shows alternative
+
+✔ PDF Generation
+
+Instruction-based sustainability guide
+
+Personalized suggestions
+
+No raw data clutter
+
+Motivational closing
+
+7️⃣ Technologies Used
+Category	Tool
+Language	Python
+UI Framework	Streamlit
+OCR	Tesseract
+Fuzzy Matching	RapidFuzz
+Data Handling	Pandas
+Visualization	Matplotlib
+PDF Generation	FPDF
+Containerization	Docker
+Version Control	Git + GitHub
+8️⃣ Engineering Lessons Learned
+
+During Phase 1:
+
+Cloud deployment complexities (import paths)
+
+System dependency management (Tesseract)
+
+Docker-based containerization
+
+Clean repository structuring
+
+Git hygiene
+
+Modular architecture design
+
+This project moved from prototype to structured engineering design.
+
+9️⃣ Limitations (Phase 1)
+
+Rule-based impact scoring
+
+Static CSV database
+
+No persistent storage
+
+No user tracking
+
+No real emission dataset integration
+
+OCR accuracy dependent on image quality
+
+🔟 Future Scope (Phase 2 & Beyond)
+
+Planned improvements:
+
+🚀 ML Integration
+
+Replace rule-based scoring with ML model
+
+Predict CO₂ emissions per product
+
+Train using real environmental datasets
+
+🚀 Database Upgrade
+
+PostgreSQL integration
+
+User purchase history tracking
+
+Analytics dashboard
+
+🚀 Backend API Layer
+
+FastAPI service
+
+REST endpoints
+
+Separate frontend/backend
+
+🚀 Cloud Infrastructure
+
+Railway / Render / Docker deployment
+
+Scalable container orchestration
+
+🚀 Sustainability Intelligence Expansion
+
+Carbon footprint calculation
+
+Category-level analytics
+
+Behavior trend tracking
+
+1️⃣1️⃣ Resume Summary
+
+EcoReceipt is a modular sustainability analysis system that demonstrates:
+
+OCR-based document processing
+
+Fuzzy text matching
+
+Data pipeline architecture
+
+Impact scoring logic
+
+Clean dashboard visualization
+
+Containerized deployment design
+
+It reflects structured engineering thinking rather than simple UI experimentation.
