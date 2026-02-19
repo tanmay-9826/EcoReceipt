@@ -1,0 +1,11 @@
+product,category,impact_score,greener_alternative,impact_reason,alternative_reason
+CHICKEN BREAST,Meat,7,Beans,Animal protein production has higher carbon emissions compared to plant-based options.,Beans require significantly less water and produce lower greenhouse gas emissions.
+ORGANIC MILK,Dairy,5,Oat Milk,Dairy farming contributes to methane emissions and land use.,Oat milk generally has lower emissions and requires less land.
+WHOLE WHEAT BREAD,Grain,3,Local Bread,Processed packaged bread involves transport and packaging impact.,Locally sourced bread reduces transportation emissions.
+APPLES,Fruit,2,Seasonal Apples,Imported fruits increase transportation footprint.,Seasonal apples reduce storage and long-distance transport impact.
+PLASTIC WATER BOTTLES,Packaging,8,Reusable Bottle,Single-use plastics contribute to pollution and landfill waste.,Reusable bottles significantly reduce plastic waste over time.
+RICE BASMATI,Grain,4,Brown Rice,Rice farming produces methane emissions.,Brown rice has similar nutrition with potentially lower processing impact.
+GREEK YOGURT,Dairy,5,Plant Yogurt,Dairy production contributes to greenhouse gases.,Plant-based yogurt alternatives typically have lower environmental impact.
+BANANAS,Fruit,2,Local Bananas,Imported bananas increase transportation emissions.,Locally sourced bananas reduce carbon footprint.
+ONIONS,Vegetable,2,Local Onions,Transport and storage contribute to emissions.,Local produce reduces transportation and storage impact.
+OLIVE OIL,Oil,6,Cold Pressed Local Oil,Imported oils increase transport emissions.,Local oils reduce supply chain emissions.
