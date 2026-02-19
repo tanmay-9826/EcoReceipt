@@ -12,7 +12,16 @@ It transforms everyday shopping data into actionable environmental insights.
 
 📸 Preview
 
-(Add screenshots here later)
+## 📸 Preview
+
+### Upload Interface
+![Upload](assets/upload.png)
+
+### Environmental Dashboard
+![Dashboard](assets/dashboard.png)
+
+### Impact Trend Analysis
+![Trend](assets/trend.png)
 
 ✨ Key Features
 
