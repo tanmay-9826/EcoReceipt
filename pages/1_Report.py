@@ -4,6 +4,13 @@ import matplotlib.pyplot as plt
 from io import BytesIO
 from fpdf import FPDF
 from PIL import Image
+import sys
+import os
+
+# ===============================
+# Fix Import Path For Streamlit Cloud
+# ===============================
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from src.ocr_engine import ocr_image
 from src.parser import clean_items
@@ -24,7 +31,6 @@ uploaded_file = st.file_uploader(
 
 if uploaded_file is not None:
 
-    # Process in memory (Cloud Safe)
     file_bytes = uploaded_file.read()
     file_stream = BytesIO(file_bytes)
 
@@ -39,7 +45,7 @@ if uploaded_file is not None:
 
     df = pd.DataFrame(results)
 
-    # Keep only required columns
+    # Keep only required columns for customer
     df = df[[
         "item_detected",
         "matched_product",
@@ -86,7 +92,7 @@ if uploaded_file is not None:
     with col_graph:
         st.subheader("📈 Item Impact Trend")
 
-        fig, ax = plt.subplots(figsize=(6, 4))
+        fig, ax = plt.subplots(figsize=(7, 4))
 
         ax.plot(
             df["matched_product"],
@@ -131,38 +137,42 @@ if uploaded_file is not None:
         pdf.set_font("Arial", "B", 16)
         pdf.cell(0, 10, "Environmental Impact Improvement Guide", ln=True)
 
-        pdf.ln(10)
+        pdf.ln(8)
 
         pdf.set_font("Arial", size=12)
-        pdf.multi_cell(0, 8,
+        pdf.multi_cell(
+            0, 8,
             "This report analyzes your purchased items and provides guidance "
-            "on how to make more environmentally responsible choices.\n"
+            "on how to make more environmentally responsible choices."
         )
 
         pdf.ln(5)
 
-        pdf.multi_cell(0, 8,
-            f"Your average impact score is {average_score}/10.\n"
+        pdf.multi_cell(
+            0, 8,
+            f"Your average environmental impact score is {average_score}/10."
         )
 
-        pdf.ln(5)
+        pdf.ln(8)
 
         for _, row in dataframe.iterrows():
             if row["impact_score"] >= 7:
-                pdf.multi_cell(0, 8,
+                pdf.multi_cell(
+                    0, 8,
                     f"You purchased {row['matched_product']} "
                     f"(Impact Score: {row['impact_score']}). "
-                    f"It has higher environmental impact because "
+                    f"This has higher environmental impact because "
                     f"{row['impact_reason']} "
-                    f"Consider replacing it with {row['greener_alternative']}.\n"
+                    f"Consider replacing it with {row['greener_alternative']}."
                 )
-                pdf.ln(3)
+                pdf.ln(4)
 
-        pdf.ln(5)
+        pdf.ln(6)
 
-        pdf.multi_cell(0, 8,
-            "Small conscious changes can collectively create significant "
-            "positive environmental impact."
+        pdf.multi_cell(
+            0, 8,
+            "Small conscious changes in daily purchasing decisions "
+            "can collectively create meaningful environmental impact."
         )
 
         return pdf.output(dest="S").encode("latin-1")
