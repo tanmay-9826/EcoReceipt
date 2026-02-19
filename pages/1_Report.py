@@ -12,9 +12,10 @@ import os
 # ===============================
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from src.ocr_engine import ocr_image
-from src.parser import clean_items
-from src.scorer import match_products
+from parser import clean_items
+from scorer import match_products
+from ocr_engine import ocr_image
+
 
 st.set_page_config(page_title="Environmental Impact Dashboard", layout="wide")
 
