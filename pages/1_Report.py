@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from io import BytesIO
 from fpdf import FPDF
+import os
 
 from core.ocr_engine import ocr_image
 from core.parser import clean_items
@@ -37,7 +38,10 @@ if "uploaded_files" not in st.session_state:
 
 st.title("📊 Environmental Impact Dashboard")
 
-catalog = load_catalog("data/products.csv")
+# Get the absolute path to the current folder, then point to the data folder
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+csv_path = os.path.join(BASE_DIR, "data", "products.csv")
+catalog = load_catalog(csv_path)
 files = st.session_state["uploaded_files"]
 all_dfs = []
 

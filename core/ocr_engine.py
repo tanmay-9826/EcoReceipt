@@ -1,10 +1,9 @@
 import pytesseract
 from PIL import Image
-import sys
 
-# This line forces Python to look in the exact right folder on your Windows PC
-if sys.platform == "win32":
-    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR'
+# This line is the magic fix. It tells Python EXACTLY where Tesseract lives on your computer.
+# If your Tesseract is installed somewhere else, change this path!
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 def ocr_image(file_stream) -> str:
     try:
